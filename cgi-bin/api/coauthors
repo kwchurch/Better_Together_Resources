@@ -1,0 +1,51 @@
+#!/usr/bin/env python3 
+
+# Import modules for CGI handling 
+import cgi, cgitb
+import json,requests,os,sys
+import numpy as np
+
+form = cgi.FieldStorage() 
+
+def usage():
+    j = {'usage': 'args: query, after_year',
+         'query': form.getvalue('query'),
+         'help': form.getvalue('help')}
+    print(json.dumps(j))
+    sys.exit()
+
+def cites_compare(r):
+    return int(r['citationCount'])
+
+def do_author(rec, after):
+    res = {}
+    for k in ['url', 'name', 'homepage', 'paperCount', 'citationCount', 'hIndex']:
+        res[k] = rec[k]
+    coauthors = []
+    for paper in rec['papers']:
+        if 'year' in paper and isinstance(paper['year'], int) and  paper['year'] >= after:
+            for author in paper['authors']:
+                coauthors.append(author['name'])
+    res['coauthors'] = np.unique(np.array(coauthors)).tolist()
+    return res
+
+def do_search(query, after_year):
+    cmd = 'http://0.0.0.0:8000/cgi-bin/api/author_search?query=' + query + '&limit=1000&fields=hIndex,citationCount,name,paperCount,homepage,url,externalIds,papers.authors,papers.year'
+    j = requests.get(cmd).json()
+    if not 'search_results' in j: return j
+    return sorted([do_author(rec, after_year) for rec in j['search_results']], key=cites_compare, reverse=True)
+    
+if not form.getvalue('help') is None:
+    usage()
+    
+query = form.getvalue('query')
+after_year = form.getvalue('after_year')
+if after_year is None: after_year = 0
+after_year = int(after_year)
+
+print('Access-Control-Allow-Origin: *\r\nContent-type: application/json\r\n\r\n')
+j = do_search(query, after_year)
+print(json.dumps(j))
+
+
+

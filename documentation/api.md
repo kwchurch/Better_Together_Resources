@@ -33,6 +33,7 @@ The following APIs return json objects:
 
 <tr><td>Lookup Paper</td>
   <td><a href="http://0.0.0.0:8000/cgi-bin/api/lookup_paper?id=PMID:24335157&fields=title&embeddings=prone">simple example</a>,
+    <br>
 <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_paper?id=PMID:24335157,CorpusId:9558665&fields=title,authors,year,citationCount,referenceCount,externalIds,citations&embeddings=prone,s2_api,specter">more challenging example</a></td>
   <td><a href="#help">help</a>, <a href="#paper_id">id</a>, <a href="#paper_fields">fields</a>, <a href="#embeddings">embeddings</a></td>
   <td>
@@ -120,8 +121,10 @@ The following APIs return json objects:
 </tr>
 
 <tr><td>Compare and Contrast</td>
-  <td><a href="http://0.0.0.0:8000/cgi-bin/api/compare_and_contrast?ids=CorpusId:10491450,CorpusId:29970479">example1</a>,
-    <a href="http://0.0.0.0:8000/cgi-bin/api/compare_and_contrast?ids=c129e8025fffa065edb5b27dd7c2269abc0a138b,CorpusId:2640788">example2</a>
+  <td><a href="http://0.0.0.0:8000/cgi-bin/api/compare_and_contrast?ids=CorpusId:10491450,CorpusId:29970479">example1</a>
+<br>
+<a href="http://0.0.0.0:8000/cgi-bin/api/compare_and_contrast?ids=c129e8025fffa065edb5b27dd7c2269abc0a138b,CorpusId:2640788">example2</a>
+<br>
     <a href="http://0.0.0.0:8000/cgi-bin/api/compare_and_contrast?ids=ACL:P89-1010,ACL:P98-2127">example2</a>
 
 </td>
