@@ -1,5 +1,13 @@
 # Better Together Resources
 
+<h2>Resources</h2>
+
+<ol>
+  <li><a href="documentation/api.html">APIs</a></li>
+  <li>Embeddings</li>
+  <li>Citation Prediction Benchmark</li>
+</ol>
+
 <h2>Installation</h2>
 
 ```sh
