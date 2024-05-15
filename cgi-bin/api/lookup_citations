@@ -1,0 +1,90 @@
+#!/usr/bin/env python3 
+
+# Import modules for CGI handling 
+import cgi, cgitb
+import json,requests,os,sys
+import numpy as np
+
+# secrets that we do not want to share
+fn = os.environ["HOME"] + '/.secrets.json'
+
+secrets = {}
+
+if os.path.exists(fn):
+    with open(fn, 'r') as fd:
+        secrets = ast.literal_eval(fd.read().rstrip())
+
+def s2_apikey():
+    if 's2_apikeys' in secrets: 
+        return secrets['s2_apikeys'][0]
+
+def s2_header():
+    k = s2_apikey()
+    if k is None: return {}
+    else: return {"x-api-key": apikey()}
+
+form = cgi.FieldStorage() 
+print('Access-Control-Allow-Origin: *\r\nContent-type: application/json\r\n\r\n')
+
+def documentation():
+    return {'usage': 'args: id, offset (defaults to 0), limit (defaults to 100; max of 1000), fields',
+            'id': form.getvalue('id'),
+            'offset': form.getvalue('offset'),
+            'limit': form.getvalue('limit'),
+            'help': form.getvalue('help')}
+
+def usage():
+    j = documentation()
+    print(json.dumps(j))
+    sys.exit()
+
+def id_ify(s):
+    if s is None: return s
+    if len(s) == 40: return s
+    for prefix in ['CorpusId:', 'PMID:', 'PMCID:', 'ACL:', 'ARXIV:', 'DBLP:', 'MAG:', 'DOI:']:
+        if s.startswith(prefix):
+            return s
+    if '/' in s: return s
+    return 'CorpusId:' + s
+
+def convert_id(id, new_type):
+    if id.startswith(new_type):
+        return id[len(new_type)+1:]
+    else:
+        my_api = 'https://api.semanticscholar.org/graph/v1/paper/'
+        cmd = my_api + str(id) + '/?fields=externalIds'
+        j = requests.get(cmd, headers=s2_header()).json()
+        if 'externalIds' in j:
+            return j['externalIds'][new_type]
+
+def convert_ids(ids, new_type):
+    return [convert_id(i, new_type) for i in ids ]
+
+def cites_compare(r):
+    return int(r['citationCount'])
+
+def do_paper(id, fields, offset, limit):
+    cmd = 'https://api.semanticscholar.org/graph/v1/paper/' + id + '/citations'
+
+    if not fields is None:
+        cmd = cmd + '?fields=' + fields
+
+    if not offset is None: 
+        cmd = cmd + '&offset=' + str(offset)
+
+    if not limit is None: 
+        cmd = cmd + '&limit=' + str(limit)
+        
+    return requests.get(cmd, headers=s2_header()).json()
+
+if not form.getvalue('help') is None: usage()
+
+id=form.getvalue('id')
+if id is None: usage()
+
+j = do_paper(id, form.getvalue('fields'), form.getvalue('offset'), form.getvalue('limit'))
+
+print(json.dumps(j))
+
+
+

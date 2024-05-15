@@ -1,0 +1,12 @@
+#!/usr/bin/env python3 
+
+# Import modules for CGI handling 
+import cgi, cgitb
+import json,requests,os,sys
+
+cmd = 'http://34.204.188.58/cgi-bin/recommend_papers?id=' + str(form.getvalue('id'))
+for k in form.keys():
+    cmd += str(k) + '=' + str(form.getvalue(k))
+
+print('Access-Control-Allow-Origin: *\r\nContent-type: application/json\r\n\r\n')
+print(json.dumps(requests.get(cmd}).json()))

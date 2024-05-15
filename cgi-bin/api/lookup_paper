@@ -1,0 +1,159 @@
+#!/usr/bin/env python3 
+
+# Import modules for CGI handling 
+import cgi, cgitb
+import json,requests,os,sys
+import numpy as np
+
+# secrets that we do not want to share
+fn = os.environ["HOME"] + '/.secrets.json'
+
+secrets = {}
+
+if os.path.exists(fn):
+    with open(fn, 'r') as fd:
+        secrets = ast.literal_eval(fd.read().rstrip())
+
+def s2_apikey():
+    if 's2_apikeys' in secrets: 
+        return secrets['s2_apikeys'][0]
+
+def s2_header():
+    k = s2_apikey()
+    if k is None: return {}
+    else: return {"x-api-key": apikey()}
+
+form = cgi.FieldStorage() 
+
+print('Access-Control-Allow-Origin: *\r\nContent-type: application/json\r\n\r\n')
+
+required_arguments = ['id', 'fields']
+optional_arguments = ['help', 'embeddings', 'limit']
+
+def unsupported_arguments():
+    res = []
+    for k in form.keys():
+        if k in required_arguments: continue
+        if k in optional_arguments: continue
+        res.append(k)
+    return res
+
+def documentation():
+    inputs = {}
+    j = {'usage': 'args: id (required), limit, fields, embeddings',
+         'inputs': inputs}
+    for k in form.keys():
+        inputs[k] = form.getvalue(k)
+
+    err = {'missing_required_arguments' : [k for k in required_arguments if form.getvalue(k) is None],
+         'unsupported_arguments' : unsupported_arguments()}
+    if len(err['missing_required_arguments']) > 0 or len(err['unsupported_arguments']) > 0:
+        j['errors'] = err
+        print(json.dumps(j))
+        sys.exit()
+
+    return j
+
+def usage():
+    j = documentation()
+    print(json.dumps(j))
+    sys.exit()
+
+def id_ify(s):
+    if s is None: return s
+    if len(s) == 40: return s
+    for prefix in ['CorpusId:', 'PMID:', 'ACL:', 'arXiv:', 'DBLP:', 'MAG:']:
+        if s.startswith(prefix):
+            return s
+    if '/' in s: return s
+    return 'CorpusId:' + s
+
+def convert_id(id, new_type):
+    if id.startswith(new_type):
+        return id[len(new_type)+1:]
+    else:
+        cmd = 'https://api.semanticscholar.org/graph/v1/paper/' + str(id) + '/?fields=externalIds'
+        j = requests.get(cmd, headers=s2_header()).json()
+        if 'externalIds' in j:
+            return j['externalIds'][new_type]
+
+def convert_ids(ids, new_type):
+    return [convert_id(i, new_type) for i in ids ]
+
+embedding_configs = { 
+    'prone' : { 'record_size' : 280, 'directory' : '/media/john-disk/files/proposed/2024-03-19/iter9'},
+    'scincl' : { 'record_size': 768, 'directory' : '/media/ken-disk/JSALTdir/semantic_scholar/embeddings/scincl'},
+    'specter': {'record_size': 768, 'directory' : '/media/ken-disk/JSALTdir/semantic_scholar/embeddings/specter2_from_doug'},
+    'gnn': {'record_size': 256, 'directory' : '/media/john-disk/files/Sandeep/specter'}
+}
+
+def id_to_int(paper):
+    if isinstance(paper, int): return paper
+    elif paper.startswith('CorpusId:'):
+        return int(paper.split(':')[1])
+    else: return None
+
+def cites_compare(r):
+    return int(r['citationCount'])
+
+def do_papers(ids, fields, limit):
+    p = {'fields': fields}
+    if not limit is None:
+        p['limit'] = limit
+    
+    return requests.post(
+        'https://api.semanticscholar.org/graph/v1/paper/batch',
+        params=p,
+        json={"ids": ids},
+        headers=s2_header()).json()
+
+def corpusid_to_int(id):
+    print('corpusid_to_int: ' + str(id), file=sys.stderr)
+    try:
+        pieces = id.split(':')
+        return int(pieces[1])
+    except:
+        return id
+
+def get_vectors_with_s2_api(ids):
+    missing = None
+    vectors = requests.post(
+        'https://api.semanticscholar.org/graph/v1/paper/batch',
+        params={'fields': 'embedding.specter_v2'},
+        json={"ids": ids },
+        headers={"x-api-key": apikey()}).json()
+    emb = []
+    for v in vectors:
+        if 'embedding' in v: 
+            emb.append(v['embedding']['vector'])
+        else:
+            if missing is None: 
+                missing = np.zeros(768, dtype=np.float32)
+            emb.append(missing)
+    return np.array(emb)
+
+def do_embedding(j, e, ids):
+    if e == 's2_api':
+        j[e] = get_vectors_with_s2_api(ids).tolist()
+    cmd = 'http://34.204.188.58/cgi-bin/lookup_paper?emdeddigns=%s&id=%s' % (str(e), ','.join(map,str(ids)))
+    jj = requests.get(cmd).json()
+    j[e] = jj[e]
+    else: usage()
+
+if not form.getvalue('help') is None: usage()
+
+id=form.getvalue('id')
+if id is None: usage()
+ids = id.split(',')
+
+j=documentation()
+j['papers'] = do_papers(ids, form.getvalue('fields'), form.getvalue('limit'))
+
+if not form.getvalue('embeddings') is None:
+    for e in form.getvalue('embeddings').split(','):
+        do_embedding(j,e.lower(),ids)
+
+print(json.dumps(j))
+
+
+

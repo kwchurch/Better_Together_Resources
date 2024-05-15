@@ -1,0 +1,61 @@
+#!/usr/bin/env python3 
+
+# Import modules for CGI handling 
+import cgi, cgitb
+import json,requests,os,sys
+import numpy as np
+
+
+# secrets that we do not want to share
+fn = os.environ["HOME"] + '/.secrets.json'
+
+secrets = {}
+
+if os.path.exists(fn):
+    with open(fn, 'r') as fd:
+        secrets = ast.literal_eval(fd.read().rstrip())
+
+def s2_apikey():
+    if 's2_apikeys' in secrets: 
+        return secrets['s2_apikeys'][0]
+
+def s2_header():
+    k = s2_apikey()
+    if k is None: return {}
+    else: return {"x-api-key": apikey()}
+
+def do_search(query, fields):
+    if fields is None:
+        fields = 'title,authors,externalIds,citationCount,year'
+    cmd = 'https://api.semanticscholar.org/graph/v1/paper/search?fields=' + fields + '&query=' + query
+    j = requests.get(cmd, headers={"x-api-key": apikey()}).json()
+    if 'data' in j:
+        return j['data']
+    else: return j
+
+print('Access-Control-Allow-Origin: *\r\nContent-type: application/json\r\n\r\n')
+
+def usage():
+    j = {'usage': 'args: query, fields',
+         'query': form.getvalue('query'),
+         'fields': form.getvalue('fields'),
+         'help': form.getvalue('help')}
+    print(json.dumps(j))
+    sys.exit()
+
+form = cgi.FieldStorage() 
+
+if not form.getvalue('help') is None:
+    usage()
+    
+fields = form.getvalue('fields')
+query = form.getvalue('query')
+
+j = {'query': query}
+
+j['search_results'] = do_search(query, fields)
+
+print(json.dumps(j))
+
+
+
