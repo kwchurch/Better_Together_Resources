@@ -3,7 +3,7 @@
 <h2>Resources</h2>
 
 <ol>
-  <li><a href="documentation/api.html">APIs</a></li>
+  <li><a href="documentation/api.md">APIs</a></li>
   <li>Embeddings</li>
   <li>Citation Prediction Benchmark</li>
 </ol>
