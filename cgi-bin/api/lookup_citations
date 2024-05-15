@@ -2,7 +2,7 @@
 
 # Import modules for CGI handling 
 import cgi, cgitb
-import json,requests,os,sys
+import ast,json,requests,os,sys
 import numpy as np
 
 # secrets that we do not want to share
@@ -21,7 +21,7 @@ def s2_apikey():
 def s2_header():
     k = s2_apikey()
     if k is None: return {}
-    else: return {"x-api-key": apikey()}
+    else: return {"x-api-key": s2_apikey()}
 
 form = cgi.FieldStorage() 
 print('Access-Control-Allow-Origin: *\r\nContent-type: application/json\r\n\r\n')

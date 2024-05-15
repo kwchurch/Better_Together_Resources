@@ -9,7 +9,7 @@ The following APIs return json objects:
 <tr><th align="left">API</th><th align="left">Examples</th><th align="left">Arguments</th><th align="left" width="50%">Description</th></tr>
 
 <tr><td>Paper Search</td>
-  <td><a href="../cgi-bin/api/paper_search?query=Word%20Association">example</a></td>
+  <td><a href="http://0.0.0.0:8000/cgi-bin/api/paper_search?query=Word%20Association">example</a></td>
   <td><a href="#help">help</a>, <a href="#query">query</a>, <a href="#paper_fields">fields</a></td>
   <td>
     <ul>
@@ -21,7 +21,7 @@ The following APIs return json objects:
 </tr>
 
 <tr><td>Author Search</td>
-  <td><a href="../cgi-bin/api/author_search?query=Kenneth+Church">example</a></td>
+  <td><a href="http://0.0.0.0:8000/cgi-bin/api/author_search?query=Kenneth+Church">example</a></td>
   <td><a href="#help">help</a>, <a href="#query">query</a>, <a href="#author_fields">fields</a></td>
   <td>
     <ul>
@@ -32,7 +32,8 @@ The following APIs return json objects:
 </td></tr>
 
 <tr><td>Lookup Paper</td>
-  <td><a href="../cgi-bin/api/lookup_paper?id=PMID:24335157,CorpusId:9558665&fields=title,authors,year,citationCount,referenceCount,externalIds,citations&embeddings=prone,s2_api,specter">example</a></td>
+  <td><a href="http://0.0.0.0:8000/cgi-bin/api/lookup_paper?id=PMID:24335157&fields=title&embeddings=prone">simple example</a>,
+<a href="http://0.0.0.0:8000/cgi-bin/api/lookup_paper?id=PMID:24335157,CorpusId:9558665&fields=title,authors,year,citationCount,referenceCount,externalIds,citations&embeddings=prone,s2_api,specter">more challenging example</a></td>
   <td><a href="#help">help</a>, <a href="#paper_id">id</a>, <a href="#paper_fields">fields</a>, <a href="#embeddings">embeddings</a></td>
   <td>
     <ul>
@@ -47,7 +48,7 @@ The following APIs return json objects:
 </tr>
 
 <tr><td>Lookup Author</td>
-  <td><a href="../cgi-bin/api/lookup_author?id=2244184&fields=papers.venue,papers.citationStyles,papers.s2FieldsOfStudy,name,authorId,citationCount,paperCount,hIndex,papers.title,papers.citationCount,papers.authors">example</a></td>
+  <td><a href="http://0.0.0.0:8000/cgi-bin/api/lookup_author?id=2244184&fields=papers.venue,papers.citationStyles,papers.s2FieldsOfStudy,name,authorId,citationCount,paperCount,hIndex,papers.title,papers.citationCount,papers.authors">example</a></td>
   <td><a href="#help">help</a>, <a href="#author_id">id</a>, <a href="#Fields">fields</a></td>
   <td>
     <ul>
@@ -59,7 +60,7 @@ The following APIs return json objects:
 </tr>
 
 <tr><td>Lookup Citations</td>
-  <td><a href="../cgi-bin/api/lookup_citations?id=CorpusId:9558665&offset=200&limit=100&fields=contexts,citationCount,referenceCount,title,authors">example</a></td>
+  <td><a href="http://0.0.0.0:8000/cgi-bin/api/lookup_citations?id=CorpusId:9558665&offset=200&limit=100&fields=contexts,citationCount,referenceCount,title,authors">example</a></td>
   <td><a href="#help">help</a>, <a href="#offset">offset</a> (defaults to 0), <a href="#limit">limit</a> (defaults to 100; max is 1000), <a href="#paper_id">id</a>, <a href="#citation_fields">fields</a></td>
   <td>
     <ul>
@@ -71,7 +72,7 @@ The following APIs return json objects:
 </tr>
 
 <tr><td>Coauthors</td>
-  <td><a href="../cgi-bin/api/coauthors?query=Kenneth+Church&after_year=2020">example</a></td>
+  <td><a href="http://0.0.0.0:8000/cgi-bin/api/coauthors?query=Kenneth+Church&after_year=2020">example</a></td>
   <td><a href="#help">help</a>, <a href="#query">query</a>,
   after_year</td>
   <td>
@@ -86,7 +87,7 @@ The following APIs return json objects:
 </tr>
 
 <tr><td>Recommend Papers</td>
-  <td><a href="../cgi-bin/api/recommend_papers?id=CorpusId:10491450&method=ProNE&fields=citationCount,externalIds">example</a></td>
+  <td><a href="http://0.0.0.0:8000/cgi-bin/api/recommend_papers?id=CorpusId:10491450&method=ProNE&fields=citationCount,externalIds">example</a></td>
   <td><a href="#help">help</a>, <a href="#paper_id">id</a>, <a href="#limit">limit</a>, <a href="#method">method</a>, <a href="#paper_fields">fields</a>,
   sort_by, <a href="#score1">score1</a>, <a href="#score2">score2</a></td>
   <td>
@@ -106,7 +107,7 @@ The following APIs return json objects:
 </tr>
 
 <tr><td>Recommend Authors</td>
-  <td><a href="../cgi-bin/api/recommend_authors?id=CorpusId:9558665&method=ProNE&fields=citationCount,externalIds">example</a></td>
+  <td><a href="http://0.0.0.0:8000/cgi-bin/api/recommend_authors?id=CorpusId:9558665&method=ProNE&fields=citationCount,externalIds">example</a></td>
   <td><a href="#help">help</a>, <a href="#paper_id">id</a>, <a href="#limit">limit</a>, <a href="#method">method</a>, <a href="#paper_fields">fields</a>, sort_by, <a href="#score1">score1</a>, <a href="#score2">score2</a></td>
   <td>
     <ul>
@@ -119,9 +120,9 @@ The following APIs return json objects:
 </tr>
 
 <tr><td>Compare and Contrast</td>
-  <td><a href="../cgi-bin/api/compare_and_contrast?ids=CorpusId:10491450,CorpusId:29970479">example1</a>,
-    <a href="../cgi-bin/api/compare_and_contrast?ids=c129e8025fffa065edb5b27dd7c2269abc0a138b,CorpusId:2640788">example2</a>
-    <a href="../cgi-bin/api/compare_and_contrast?ids=ACL:P89-1010,ACL:P98-2127">example2</a>
+  <td><a href="http://0.0.0.0:8000/cgi-bin/api/compare_and_contrast?ids=CorpusId:10491450,CorpusId:29970479">example1</a>,
+    <a href="http://0.0.0.0:8000/cgi-bin/api/compare_and_contrast?ids=c129e8025fffa065edb5b27dd7c2269abc0a138b,CorpusId:2640788">example2</a>
+    <a href="http://0.0.0.0:8000/cgi-bin/api/compare_and_contrast?ids=ACL:P89-1010,ACL:P98-2127">example2</a>
 
 </td>
   <td><a href="#help">help</a>, ids (two or more <a href="#paper_id">id</a>s, separated by commas)</td>
@@ -133,7 +134,7 @@ The following APIs return json objects:
 </tr>
 
 <tr><td>Compare and Contrast Texts</td>
-  <td><a href="../cgi-bin/api/compare_and_contrast_texts?text1=I love you.&text2=I hate you.">example</a>
+  <td><a href="http://0.0.0.0:8000/cgi-bin/api/compare_and_contrast_texts?text1=I love you.&text2=I hate you.">example</a>
 </td>
   <td><a href="#help">help</a>, text1, text2</td>
   <td>
@@ -152,12 +153,12 @@ The following APIs return json objects:
   <li id="query">query: input string</li>
   <li id="paper_id">id: input for lookup_paper, recommendations and lookup_citations; many of the externalId formats are supported, including:
     <ol>
-      <li>sha (40 byte hex); <a href="../cgi-bin/api/lookup_paper?id=ea7886975510353c194303931b333af983a63ed7&fields=title,authors,citationCount,externalIds">example</a></li>
-      <li>CorpusId (the primary key in Semantic Scholar); <a href="../cgi-bin/api/lookup_paper?id=CorpusId:10491450&fields=title,authors,citationCount,externalIds">example</a></li>
-      <li>PMID (pubmed ids); <a href="../cgi-bin/api/lookup_paper?id=PMID:24335157&fields=title,authors,citationCount,externalIds">example</a></li>
-      <li>ACL (<a href="https://aclanthology.org/">acl anthology</a> ids); <a href="../cgi-bin/api/lookup_paper?id=ACL:2022.lrec-1.676&fields=title,authors,citationCount,externalIds">example</a></li>
-      <li><a href="https://arxiv.org/">arXiv</a>; <a href="../cgi-bin/api/lookup_paper?id=arXiv:2111.03628&fields=title,authors,citationCount,externalIds">example</a></li>
-      <li>MAG (<a href="https://www.microsoft.com/en-us/research/project/microsoft-academic-graph/">Microsoft Academic Graph</a>); <a href="../cgi-bin/api/lookup_paper?id=MAG:3167354871&fields=title,authors,citationCount,externalIds">example</a></li>
+      <li>sha (40 byte hex); <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_paper?id=ea7886975510353c194303931b333af983a63ed7&fields=title,authors,citationCount,externalIds">example</a></li>
+      <li>CorpusId (the primary key in Semantic Scholar); <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_paper?id=CorpusId:10491450&fields=title,authors,citationCount,externalIds">example</a></li>
+      <li>PMID (pubmed ids); <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_paper?id=PMID:24335157&fields=title,authors,citationCount,externalIds">example</a></li>
+      <li>ACL (<a href="https://aclanthology.org/">acl anthology</a> ids); <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_paper?id=ACL:2022.lrec-1.676&fields=title,authors,citationCount,externalIds">example</a></li>
+      <li><a href="https://arxiv.org/">arXiv</a>; <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_paper?id=arXiv:2111.03628&fields=title,authors,citationCount,externalIds">example</a></li>
+      <li>MAG (<a href="https://www.microsoft.com/en-us/research/project/microsoft-academic-graph/">Microsoft Academic Graph</a>); <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_paper?id=MAG:3167354871&fields=title,authors,citationCount,externalIds">example</a></li>
       </ol></li>
   <li id="author_id">id: input for lookup_author (Note: author ids are different from <a href="#paper_id">paper ids</a>)</li>
   <li id="offset">offset: start of papers to return (defaults to 0)</li>
@@ -165,21 +166,21 @@ The following APIs return json objects:
   <li><a href="#Fields">fields</a>: one or more comma separated values.  Many values are supported including title, authors, publication year, bibtex entries, references, citations, citing sentences and much more (see discussion <a href="#Fields">below</a>)</li>
   <li id="method">method (for generating recommendations); method should be one of the following (comma separated values and case insensitive):
     <ol>
-      <li>ProNE: <a href="../cgi-bin/api/recommend_papers?id=CorpusId:10491450&method=prone&fields=title">example</a></li>
-      <li>Specter: <a href="../cgi-bin/api/recommend_papers?id=CorpusId:10491450&method=specter&fields=title">example</a></li>
-      <li>s2_api: <a href="../cgi-bin/api/recommend_papers?id=CorpusId:10491450&method=s2_api&fields=title">example</a></li>
-      <li>pubmed_api: <a href="../cgi-bin/api/recommend_papers?id=CorpusId:10491450&method=pubmed_api&fields=title">example</a></li>
+      <li>ProNE: <a href="http://0.0.0.0:8000/cgi-bin/api/recommend_papers?id=CorpusId:10491450&method=prone&fields=title">example</a></li>
+      <li>Specter: <a href="http://0.0.0.0:8000/cgi-bin/api/recommend_papers?id=CorpusId:10491450&method=specter&fields=title">example</a></li>
+      <li>s2_api: <a href="http://0.0.0.0:8000/cgi-bin/api/recommend_papers?id=CorpusId:10491450&method=s2_api&fields=title">example</a></li>
+      <li>pubmed_api: <a href="http://0.0.0.0:8000/cgi-bin/api/recommend_papers?id=CorpusId:10491450&method=pubmed_api&fields=title">example</a></li>
       </ol>
     The first two, ProNE and Specter, use cached embeddings to generate recommendations.  The last two generate recommendations from Semantic Scholar (S2) and PubMed, respectively
 </li>
 
   <li id="embeddings">Embeddings (for lookup paper); one or more of the following (comma separated values and case insensitive):
     <ol>
-      <li>ProNE: <a href="../cgi-bin/api/lookup_paper?id=CorpusId:10491450&embeddings=prone&fields=title">example</a></li>
-      <li>Specter: <a href="../cgi-bin/api/lookup_paper?id=CorpusId:10491450&embeddings=specter&fields=title">example</a></li>
-      <li>SciNCL: <a href="../cgi-bin/api/lookup_paper?id=CorpusId:10491450&embeddings=SciNCL&fields=title">example</a></li>
-      <li>GNN: <a href="../cgi-bin/api/lookup_paper?id=CorpusId:10491450&embeddings=gnn&fields=title">example</a></li>
-      <li>s2_api: <a href="../cgi-bin/api/lookup_paper?id=CorpusId:10491450&embeddings=s2_api&fields=title">example</a></li>
+      <li>ProNE: <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_paper?id=CorpusId:10491450&embeddings=prone&fields=title">example</a></li>
+      <li>Specter: <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_paper?id=CorpusId:10491450&embeddings=specter&fields=title">example</a></li>
+      <li>SciNCL: <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_paper?id=CorpusId:10491450&embeddings=SciNCL&fields=title">example</a></li>
+      <li>GNN: <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_paper?id=CorpusId:10491450&embeddings=gnn&fields=title">example</a></li>
+      <li>s2_api: <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_paper?id=CorpusId:10491450&embeddings=s2_api&fields=title">example</a></li>
       </ol>
     
     The first four ProNE, Specter and GNN, use cached vectors.  The last one, s2_api, uses an API from Semantic Scholar to return the most recent values.
@@ -189,13 +190,13 @@ The following APIs return json objects:
   
 prone, scincl, specter, gnn, s2_api (case insensitive).
 
-  <li id="score1">score1: outputs 1d vectors of cosine scores between each recommendation.  The value of score1 is a (case insensitive) comma separated list of embeddings: ProNE, Specter, SciNCL, GNN; <a href="../cgi-bin/api/recommend_papers?id=CorpusId:10491450&method=ProNE&score1=prone,specter,gnn,scincl">example</a>. 
+  <li id="score1">score1: outputs 1d vectors of cosine scores between each recommendation.  The value of score1 is a (case insensitive) comma separated list of embeddings: ProNE, Specter, SciNCL, GNN; <a href="http://0.0.0.0:8000/cgi-bin/api/recommend_papers?id=CorpusId:10491450&method=ProNE&score1=prone,specter,gnn,scincl">example</a>. 
     <br>Note: missing values will have cosines of 0</li>
 <li id="score2">score2: outputs pairwise cosine scores between each
 pair recommendations.  The value of score2 is a (case insensitive)
 comma separated list of embeddings: ProNE, Specter, SciNCL, GNN comma
 separated list of embeddings (pairwise cosines of
-  recommendations); <a href="../cgi-bin/api/recommend_papers?id=CorpusId:10491450&method=ProNE&score2=prone,specter,gnn,scincl">example</a>.
+  recommendations); <a href="http://0.0.0.0:8000/cgi-bin/api/recommend_papers?id=CorpusId:10491450&method=ProNE&score2=prone,specter,gnn,scincl">example</a>.
   <br>
 Note: missing values will have cosines of 0</li>
   </ol>
@@ -211,49 +212,49 @@ Some useful values are shown below (with separate lists for <a href="#paper_fiel
     <ol>
       <li>externalIds (outputs one or more of the following ids from the 8 sources behind Semantic Scholar)
 	<ol>
-	  <li>CorpusId (the primary key for Semantic Scholar); <a href="../cgi-bin/api/lookup_paper?id=CorpusId:172192617&fields=externalIds">example</a></li>
-	  <li>MAG (Microsoft Academic Graph); <a href="../cgi-bin/api/lookup_paper?id=CorpusId:172192617&fields=externalIds">example</a></li>
-	  <li>DOI; <a href="../cgi-bin/api/lookup_paper?id=CorpusId:10350567&fields=externalIds">example</a></li>
-	  <li>PubMed; <a href="../cgi-bin/api/lookup_paper?id=PMID:24335157&fields=externalIds">example</a></li>
-	  <li>PubMedCentral; <a href="../cgi-bin/api/lookup_paper?id=CorpusId:38265596&fields=externalIds">example</a></li>
-	  <li>DBLP; <a href="../cgi-bin/api/lookup_paper?id=CorpusId:207417927&fields=externalIds">example</a></li>
-	  <li>arXiv; <a href="../cgi-bin/api/lookup_paper?id=CorpusId:209531806&fields=externalIds">example</a></li>
-	  <li>ACL; <a href="../cgi-bin/api/lookup_paper?id=CorpusId:18807392&fields=externalIds">example</a></li>
+	  <li>CorpusId (the primary key for Semantic Scholar); <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_paper?id=CorpusId:172192617&fields=externalIds">example</a></li>
+	  <li>MAG (Microsoft Academic Graph); <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_paper?id=CorpusId:172192617&fields=externalIds">example</a></li>
+	  <li>DOI; <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_paper?id=CorpusId:10350567&fields=externalIds">example</a></li>
+	  <li>PubMed; <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_paper?id=PMID:24335157&fields=externalIds">example</a></li>
+	  <li>PubMedCentral; <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_paper?id=CorpusId:38265596&fields=externalIds">example</a></li>
+	  <li>DBLP; <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_paper?id=CorpusId:207417927&fields=externalIds">example</a></li>
+	  <li>arXiv; <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_paper?id=CorpusId:209531806&fields=externalIds">example</a></li>
+	  <li>ACL; <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_paper?id=CorpusId:18807392&fields=externalIds">example</a></li>
 	</ol>
       </li>
-      <li>url (pointer into Semantic Scholar); <a href="../cgi-bin/api/lookup_paper?id=PMID:24335157&fields=url">example</a></li>
-      <li>title (of paper); <a href="../cgi-bin/api/lookup_paper?id=PMID:24335157&fields=title">example</a></li>
-      <li>abstract; <a href="../cgi-bin/api/lookup_paper?id=PMID:24335157&fields=abstract">example</a></li>
-      <li>tldr; <a href="../cgi-bin/api/lookup_paper?id=PMID:24335157&fields=tldr">example</a></li>
+      <li>url (pointer into Semantic Scholar); <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_paper?id=PMID:24335157&fields=url">example</a></li>
+      <li>title (of paper); <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_paper?id=PMID:24335157&fields=title">example</a></li>
+      <li>abstract; <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_paper?id=PMID:24335157&fields=abstract">example</a></li>
+      <li>tldr; <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_paper?id=PMID:24335157&fields=tldr">example</a></li>
       <li>authors; you can request a list of author objects and/or specific fields from the author objects:
 	<ol>
-	  <li>authors (list of author objects); <a href="../cgi-bin/api/lookup_paper?id=PMID:24335157&fields=authors">example</a></li>
-	  <li>authors.name (list of author names); <a href="../cgi-bin/api/lookup_paper?id=PMID:24335157&fields=authors.name">example</a></li>
-	  <li>authors.authorId (list of author ids); <a href="../cgi-bin/api/lookup_paper?id=PMID:24335157&fields=authors.authorId">example</a></li>
+	  <li>authors (list of author objects); <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_paper?id=PMID:24335157&fields=authors">example</a></li>
+	  <li>authors.name (list of author names); <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_paper?id=PMID:24335157&fields=authors.name">example</a></li>
+	  <li>authors.authorId (list of author ids); <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_paper?id=PMID:24335157&fields=authors.authorId">example</a></li>
 	</ol>
       </li>
-      <li>year; <a href="../cgi-bin/api/lookup_paper?id=PMID:24335157&fields=year">example</a></li>
-      <li>venue; <a href="../cgi-bin/api/lookup_paper?id=PMID:24335157&fields=venue">example</a></li>
-      <li>citationStyles; <a href="../cgi-bin/api/lookup_paper?id=PMID:24335157&fields=citationStyles">example</a> (outputs bibtex entries)</li>
-      <li>referenceCount; <a href="../cgi-bin/api/lookup_paper?id=PMID:24335157&fields=referenceCount">example</a></li>
-      <li>citationCount; <a href="../cgi-bin/api/lookup_paper?id=PMID:24335157&fields=citationCount">example</a></li>
-      <li>openAccessPdf (pointer to PDF file, if known); <a href="../cgi-bin/api/lookup_paper?id=CorpusId:18807392&fields=openAccessPdf">example</a></li>
-      <li>fieldsOfStudy (probably from MAG); <a href="../cgi-bin/api/lookup_paper?id=PMID:24335157&fields=fieldsOfStudy">example</a></li>
-      <li>s2FieldsOfStudy (like fieldsOfStudy, but from Semantic Scholar); <a href="../cgi-bin/api/lookup_paper?id=PMID:24335157&fields=s2FieldsOfStudy">example</a></li>
-      <li>embedding.specter_v2 (vector of 768 floats based on an encoding of the title and abstract using a BERT-like model); <a href="../cgi-bin/api/lookup_paper?id=PMID:24335157&fields=embedding.specter_v2">example</a></li>
-      <li>citations (list of papers that cite this paper); <a href="../cgi-bin/api/lookup_paper?id=PMID:24335157&fields=citations">example</a>
+      <li>year; <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_paper?id=PMID:24335157&fields=year">example</a></li>
+      <li>venue; <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_paper?id=PMID:24335157&fields=venue">example</a></li>
+      <li>citationStyles; <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_paper?id=PMID:24335157&fields=citationStyles">example</a> (outputs bibtex entries)</li>
+      <li>referenceCount; <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_paper?id=PMID:24335157&fields=referenceCount">example</a></li>
+      <li>citationCount; <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_paper?id=PMID:24335157&fields=citationCount">example</a></li>
+      <li>openAccessPdf (pointer to PDF file, if known); <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_paper?id=CorpusId:18807392&fields=openAccessPdf">example</a></li>
+      <li>fieldsOfStudy (probably from MAG); <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_paper?id=PMID:24335157&fields=fieldsOfStudy">example</a></li>
+      <li>s2FieldsOfStudy (like fieldsOfStudy, but from Semantic Scholar); <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_paper?id=PMID:24335157&fields=s2FieldsOfStudy">example</a></li>
+      <li>embedding.specter_v2 (vector of 768 floats based on an encoding of the title and abstract using a BERT-like model); <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_paper?id=PMID:24335157&fields=embedding.specter_v2">example</a></li>
+      <li>citations (list of papers that cite this paper); <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_paper?id=PMID:24335157&fields=citations">example</a>
 	<ol>
-	  <li>citations.title; <a href="../cgi-bin/api/lookup_paper?id=PMID:24335157&fields=citations.title">example</a></li>
-	  <li>citations.authors; <a href="../cgi-bin/api/lookup_paper?id=PMID:24335157&fields=citations.authors">example</a></li>
-	  <li>citations.citationCount; <a href="../cgi-bin/api/lookup_paper?id=PMID:24335157&fields=citations.citationCount">example</a></li>
+	  <li>citations.title; <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_paper?id=PMID:24335157&fields=citations.title">example</a></li>
+	  <li>citations.authors; <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_paper?id=PMID:24335157&fields=citations.authors">example</a></li>
+	  <li>citations.citationCount; <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_paper?id=PMID:24335157&fields=citations.citationCount">example</a></li>
 	  <li>citations.<i>xyz</i> where <i>xyz</i> is authors, citationCount and most other <a href="#paper_fields">paper fields</a></li>
 	</ol>
       </li>
-      <li>references; <a href="../cgi-bin/api/lookup_paper?id=PMID:24335157&fields=references">example</a>
+      <li>references; <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_paper?id=PMID:24335157&fields=references">example</a>
 	<ol>
-	  <li>references.title; <a href="../cgi-bin/api/lookup_paper?id=PMID:24335157&fields=references.title">example</a></li>
-	  <li>references.authors; <a href="../cgi-bin/api/lookup_paper?id=PMID:24335157&fields=references.authors">example</a></li>
-	  <li>references.citationCount; <a href="../cgi-bin/api/lookup_paper?id=PMID:24335157&fields=references.citationCount">example</a></li>
+	  <li>references.title; <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_paper?id=PMID:24335157&fields=references.title">example</a></li>
+	  <li>references.authors; <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_paper?id=PMID:24335157&fields=references.authors">example</a></li>
+	  <li>references.citationCount; <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_paper?id=PMID:24335157&fields=references.citationCount">example</a></li>
 	  <li>references.<i>xyz</i> where <i>xyz</i> is authors, citationCount and most other <a href="#paper_fields">paper fields</a></li>
 	</ol>
       </li>
@@ -261,27 +262,27 @@ Some useful values are shown below (with separate lists for <a href="#paper_fiel
   </li>
   <li id="author_fields">Fields for authors:
     <ol>
-      <li>authorId; <a href="../cgi-bin/api/lookup_author?id=2244184&fields=authorId">example</a></li>
-      <li>externalIds; <a href="../cgi-bin/api/lookup_author?id=2244184&fields=externalIds">example</a></li>
-      <li>url; <a href="../cgi-bin/api/lookup_author?id=2244184&fields=url">example</a></li>
-      <li>name; <a href="../cgi-bin/api/lookup_author?id=2244184&fields=name">example</a></li>
-      <li>affiliations; <a href="../cgi-bin/api/lookup_author?id=2244184&fields=affiliations">example</a></li>
-      <li>homepage; <a href="../cgi-bin/api/lookup_author?id=2244184&fields=homepage">example</a></li>
-      <li>paperCount; <a href="../cgi-bin/api/lookup_author?id=2244184&fields=paperCount">example</a></li>
-      <li>hIndex; <a href="../cgi-bin/api/lookup_author?id=2244184&fields=hIndex">example</a></li>
-      <li>citationCount; <a href="../cgi-bin/api/lookup_author?id=2244184&fields=citationCount">example</a></li>
-      <li>papers (list of papers); <a href="../cgi-bin/api/lookup_author?id=2244184&fields=papers">example</a>
+      <li>authorId; <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_author?id=2244184&fields=authorId">example</a></li>
+      <li>externalIds; <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_author?id=2244184&fields=externalIds">example</a></li>
+      <li>url; <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_author?id=2244184&fields=url">example</a></li>
+      <li>name; <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_author?id=2244184&fields=name">example</a></li>
+      <li>affiliations; <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_author?id=2244184&fields=affiliations">example</a></li>
+      <li>homepage; <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_author?id=2244184&fields=homepage">example</a></li>
+      <li>paperCount; <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_author?id=2244184&fields=paperCount">example</a></li>
+      <li>hIndex; <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_author?id=2244184&fields=hIndex">example</a></li>
+      <li>citationCount; <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_author?id=2244184&fields=citationCount">example</a></li>
+      <li>papers (list of papers); <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_author?id=2244184&fields=papers">example</a>
 	<ol>
-	  <li>papers.title; <a href="../cgi-bin/api/lookup_author?id=2244184&fields=papers">example</a></li>
-	  <li>papers.externalIds; <a href="../cgi-bin/api/lookup_author?id=2244184&fields=papers.externalIds">example</a></li>
+	  <li>papers.title; <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_author?id=2244184&fields=papers">example</a></li>
+	  <li>papers.externalIds; <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_author?id=2244184&fields=papers.externalIds">example</a></li>
 	  <li>papers.<i>xyz</i> where <i>xyz</i> is authors, citationCount and most other <a href="#paper_fields">paper fields</a></li>
 	</ol>
       </li>
     </ol>
   <li id="citation_fields">Fields for citations:
     <ol>
-      <li>contexts (citing sentences): <a href="../cgi-bin/api/lookup_citations?id=CorpusId:9558665&fields=contexts">example</a></li>
-      <li>intents: <a href="../cgi-bin/api/lookup_citations?id=CorpusId:9558665&fields=intents">example</a></li>
+      <li>contexts (citing sentences): <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_citations?id=CorpusId:9558665&fields=contexts">example</a></li>
+      <li>intents: <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_citations?id=CorpusId:9558665&fields=intents">example</a></li>
       <li><i>xyz</i> where <i>xyz</i> is authors, citationCount and most other <a href="#paper_fields">paper fields</a></li>
     </ol>
   </li>
@@ -292,15 +293,15 @@ Some useful values are shown below (with separate lists for <a href="#paper_fiel
 Many inputs are supported.  The simplest case is a corpus id from Semantic Scholar:
 
 <ol>
-  <li><a href="../cgi-bin/api/similar?CorpusId=3051291">similar?CorpusId=3051291</a></li>
+  <li><a href="http://0.0.0.0:8000/cgi-bin/api/similar?CorpusId=3051291">similar?CorpusId=3051291</a></li>
 </ol>
 
 Search, query and author are also supported:
 
 <ol>
-  <li><a href="../cgi-bin/api/similar?search=deepwalk">similar?search=deepwalk</a></li>
-  <li><a href="../cgi-bin/api/similar?query=deepwalk">similar?query=deepwalk</a></li>
-  <li><a href="../cgi-bin/api/similar?author=Povey&limit=10">similar?author=Povey&limit=10</a></li>
+  <li><a href="http://0.0.0.0:8000/cgi-bin/api/similar?search=deepwalk">similar?search=deepwalk</a></li>
+  <li><a href="http://0.0.0.0:8000/cgi-bin/api/similar?query=deepwalk">similar?query=deepwalk</a></li>
+  <li><a href="http://0.0.0.0:8000/cgi-bin/api/similar?author=Povey&limit=10">similar?author=Povey&limit=10</a></li>
 </ol>
 
 All of these use APIs from Semantic Scholar.  Query uses autocomplete, and Search uses another method from Semantic Scholar
@@ -311,25 +312,25 @@ we list a number of papers sorted by citations, with links to find similar paper
 <h3>Specifying Embeddings</h3>
 There is an embedding option.  Four values are currently supported: specter, specter2, scincl and proposed [default].
   <ol> 
-      <li><a href="../cgi-bin/api/similar?CorpusId=3051291&embedding=specter">embedding=specter</a></li>
-      <li><a href="../cgi-bin/api/similar?CorpusId=3051291&embedding=specter2">embedding=specter2</a></li>
-      <li><a href="../cgi-bin/api/similar?CorpusId=3051291&embedding=scincl">embedding=scincl</a></li>
-      <li><a href="../cgi-bin/api/similar?CorpusId=3051291&embedding=proposed">embedding=proposed</a></li>
+      <li><a href="http://0.0.0.0:8000/cgi-bin/api/similar?CorpusId=3051291&embedding=specter">embedding=specter</a></li>
+      <li><a href="http://0.0.0.0:8000/cgi-bin/api/similar?CorpusId=3051291&embedding=specter2">embedding=specter2</a></li>
+      <li><a href="http://0.0.0.0:8000/cgi-bin/api/similar?CorpusId=3051291&embedding=scincl">embedding=scincl</a></li>
+      <li><a href="http://0.0.0.0:8000/cgi-bin/api/similar?CorpusId=3051291&embedding=proposed">embedding=proposed</a></li>
 </ol>
 
 <h3>Json Output</h3>
   
 Example:
 <ol>
-  <li><a href="../cgi-bin/api/similar?query=deepwalk">similar?query=deepwalk</a></li>
-  <li><a href="../cgi-bin/api/similar?query=deepwalk&output_mode=json">similar?query=deepwalk&output_mode=json</a> Same as above, but outputs json</li>
+  <li><a href="http://0.0.0.0:8000/cgi-bin/api/similar?query=deepwalk">similar?query=deepwalk</a></li>
+  <li><a href="http://0.0.0.0:8000/cgi-bin/api/similar?query=deepwalk&output_mode=json">similar?query=deepwalk&output_mode=json</a> Same as above, but outputs json</li>
 </ol>
 
 <h3>limit</h3>
 
 Most of the commands above take a limit option [default=50]
 <ol>
-  <li><a href="../cgi-bin/api/similar?author=Povey&limit=10">similar?author=Povey&limit=10</a></li>
+  <li><a href="http://0.0.0.0:8000/cgi-bin/api/similar?author=Povey&limit=10">similar?author=Povey&limit=10</a></li>
 </ol>
 
   </body>

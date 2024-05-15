@@ -2,7 +2,7 @@
 
 # Import modules for CGI handling 
 import cgi, cgitb
-import json,requests,os,sys
+import ast,json,requests,os,sys
 import numpy as np
 
 # secrets that we do not want to share
@@ -21,7 +21,7 @@ def s2_apikey():
 def s2_header():
     k = s2_apikey()
     if k is None: return {}
-    else: return {"x-api-key": apikey()}
+    else: return {"x-api-key": s2_apikey()}
 
 form = cgi.FieldStorage() 
 
@@ -121,7 +121,7 @@ def get_vectors_with_s2_api(ids):
         'https://api.semanticscholar.org/graph/v1/paper/batch',
         params={'fields': 'embedding.specter_v2'},
         json={"ids": ids },
-        headers={"x-api-key": apikey()}).json()
+        headers=s2_header()).json()
     emb = []
     for v in vectors:
         if 'embedding' in v: 
@@ -135,10 +135,15 @@ def get_vectors_with_s2_api(ids):
 def do_embedding(j, e, ids):
     if e == 's2_api':
         j[e] = get_vectors_with_s2_api(ids).tolist()
-    cmd = 'http://34.204.188.58/cgi-bin/lookup_paper?emdeddigns=%s&id=%s' % (str(e), ','.join(map,str(ids)))
-    jj = requests.get(cmd).json()
-    j[e] = jj[e]
-    else: usage()
+    else:
+        cmd = 'http://34.204.188.58/cgi-bin/lookup_paper?fields=externalIds&emdeddings=%s&id=%s' % (str(e), ','.join(map(str, ids)))
+        print('cmd: ' + str(cmd), file=sys.stderr)
+        jj = requests.get(cmd).json()
+        j[e] = jj
+        # if 'papers' in jj and e in jj['papers'][0]:
+        #     j[e] = jj['papers'][0][e]
+        # else: 
+        #     j[e] = jj
 
 if not form.getvalue('help') is None: usage()
 
