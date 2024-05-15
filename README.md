@@ -28,7 +28,7 @@ VecML keys can be obtained from  <a href="www.vecml.com">here</a>.  Click on log
 
 ```sh
 {"s2_apikeys" : [ ** insert zero or more semantic scholar api keys here ** ], 
-"vecml_apikeys" : [ ** insert one or more vecml api keys here ** ] }
+"vecml_apikeys" : [ ** insert zero or more vecml api keys here ** ] }
 ```
 
 To start the web server
