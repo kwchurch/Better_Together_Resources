@@ -134,14 +134,14 @@ def do_embedding(j, e, ids):
     if e == 's2_api':
         j[e] = get_vectors_with_s2_api(ids).tolist()
     else:
-        cmd = 'http://34.204.188.58/cgi-bin/lookup_paper?fields=externalIds&emdeddings=%s&id=%s' % (str(e), ','.join(map(str, ids)))
+        cmd = 'http://34.204.188.58//cgi-bin/lookup_paper?id=%s&fields=title&embeddings=%s' % (','.join(map(str, ids)), str(e))
         print('cmd: ' + str(cmd), file=sys.stderr)
         jj = requests.get(cmd).json()
-        j[e] = jj
-        # if 'papers' in jj and e in jj['papers'][0]:
-        #     j[e] = jj['papers'][0][e]
-        # else: 
-        #     j[e] = jj
+        jj['command'] = cmd
+        if e in jj:
+            j[e] = jj[e]
+        else:
+            j[e] = jj
 
 if not form.getvalue('help') is None: usage()
 
@@ -158,6 +158,4 @@ if not form.getvalue('embeddings') is None:
 
 print('Access-Control-Allow-Origin: *\r\nContent-type: application/json\r\n\r\n')
 print(json.dumps(j))
-
-
 
