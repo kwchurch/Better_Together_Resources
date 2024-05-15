@@ -4,9 +4,11 @@
 import cgi, cgitb
 import json,requests,os,sys
 
-cmd = 'http://34.204.188.58/cgi-bin/recommend_authors?id=' + str(form.getvalue('id'))
-for k in form.keys():
-    cmd += str(k) + '=' + str(form.getvalue(k))
+form = cgi.FieldStorage() 
 
+cmd = 'http://34.204.188.58/cgi-bin/recommend_papers?' + '&'.join([ str(k) + '=' + str(form.getvalue(k)) for k in form.keys() ])
+
+j = requests.get(cmd).json()
 print('Access-Control-Allow-Origin: *\r\nContent-type: application/json\r\n\r\n')
-print(json.dumps(requests.get(cmd}).json()))
+print(json.dumps(j))
+

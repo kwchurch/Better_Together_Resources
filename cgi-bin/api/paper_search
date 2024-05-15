@@ -5,6 +5,7 @@ import cgi, cgitb
 import ast,json,requests,os,sys
 import numpy as np
 
+form = cgi.FieldStorage() 
 
 # secrets that we do not want to share
 fn = os.environ["HOME"] + '/.secrets.json'
@@ -33,8 +34,6 @@ def do_search(query, fields):
         return j['data']
     else: return j
 
-print('Access-Control-Allow-Origin: *\r\nContent-type: application/json\r\n\r\n')
-
 def usage():
     j = {'usage': 'args: query, fields',
          'query': form.getvalue('query'),
@@ -42,8 +41,6 @@ def usage():
          'help': form.getvalue('help')}
     print(json.dumps(j))
     sys.exit()
-
-form = cgi.FieldStorage() 
 
 if not form.getvalue('help') is None:
     usage()
@@ -55,7 +52,5 @@ j = {'query': query}
 
 j['search_results'] = do_search(query, fields)
 
+print('Access-Control-Allow-Origin: *\r\nContent-type: application/json\r\n\r\n')
 print(json.dumps(j))
-
-
-

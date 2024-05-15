@@ -7,6 +7,8 @@ import numpy as np
 from contextlib import redirect_stdout
 import cgi, cgitb
 
+form = cgi.FieldStorage() 
+
 # secrets that we do not want to share
 fn = os.environ["HOME"] + '/.secrets.json'
 assert os.path.exists(fn), fn + ' does not exist; the file should contain a json object with keys for s2_apikeys and vecml_keys; see README for https://github.com/kwchurch/RAG'
@@ -81,10 +83,6 @@ print('Access-Control-Allow-Origin: *\r\nContent-type: application/json\r\n\r\n'
 
 res = []
 scores = []
-
-form = cgi.FieldStorage() 
-# form = Form()
-
 
 required_arguments = ['ids']
 optional_arguments = ['help']

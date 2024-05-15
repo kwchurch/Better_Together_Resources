@@ -5,6 +5,8 @@ import cgi, cgitb
 import ast,json,requests,os,sys
 import numpy as np
 
+form = cgi.FieldStorage() 
+
 # secrets that we do not want to share
 fn = os.environ["HOME"] + '/.secrets.json'
 
@@ -23,8 +25,6 @@ def s2_header():
     if k is None: return {}
     else: return {"x-api-key": s2_apikey()}
 
-form = cgi.FieldStorage() 
-print('Access-Control-Allow-Origin: *\r\nContent-type: application/json\r\n\r\n')
 
 def documentation():
     return {'usage': 'args: id, offset (defaults to 0), limit (defaults to 100; max of 1000), fields',
@@ -84,6 +84,7 @@ if id is None: usage()
 
 j = do_paper(id, form.getvalue('fields'), form.getvalue('offset'), form.getvalue('limit'))
 
+print('Access-Control-Allow-Origin: *\r\nContent-type: application/json\r\n\r\n')
 print(json.dumps(j))
 
 

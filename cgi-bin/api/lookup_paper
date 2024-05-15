@@ -5,6 +5,8 @@ import cgi, cgitb
 import ast,json,requests,os,sys
 import numpy as np
 
+form = cgi.FieldStorage() 
+
 # secrets that we do not want to share
 fn = os.environ["HOME"] + '/.secrets.json'
 
@@ -22,10 +24,6 @@ def s2_header():
     k = s2_apikey()
     if k is None: return {}
     else: return {"x-api-key": s2_apikey()}
-
-form = cgi.FieldStorage() 
-
-print('Access-Control-Allow-Origin: *\r\nContent-type: application/json\r\n\r\n')
 
 required_arguments = ['id', 'fields']
 optional_arguments = ['help', 'embeddings', 'limit']
@@ -158,6 +156,7 @@ if not form.getvalue('embeddings') is None:
     for e in form.getvalue('embeddings').split(','):
         do_embedding(j,e.lower(),ids)
 
+print('Access-Control-Allow-Origin: *\r\nContent-type: application/json\r\n\r\n')
 print(json.dumps(j))
 
 
