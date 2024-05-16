@@ -8,6 +8,8 @@
   <li>Citation Prediction Benchmark: A classification task for predicting whether paper <i>a</i> cites paper <i>b</i>.  The system is given as input  a pair of papers that are 1-4 hops apart in citation graph.  The system is asked to distinguish positives (1-hop) from negatives (2-4 hops).  In addition, the papers in S2 are assigned to a time bin (0-99).  The system should train on papers in bins 0 through bin <i>t</i> and test on bin <i>t+h</i>, where <i>h</i> is the forecaseting horizon.  For the test set, each pair, <i>a,b</i> is assigned to max(bin(<i>a</i>), bin(<i>b</i>)).</li>
 </ol>
 
+<img src="figures/crossover.pdf" alt="crossover" width="300">
+
 <h2>Installation</h2>
 
 ```sh
