@@ -11,7 +11,7 @@
   </li>
 </ol>
 
-<img src="figures/train_on_50_bins.pdf.pdf" alt="Train on 50 Bins" width="300">
+<img src="figures/train_on_50_bins.pdf" alt="Train on 50 Bins" width="300">
 <img src="figures/crossover.pdf" alt="Crossover" width="300">
 
 <h2>Installation</h2>
