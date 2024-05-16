@@ -5,10 +5,14 @@
 <ol>
   <li><a href="documentation/api.md">APIs</a>: Easy-to-Use tools based on <a href="https://api.semanticscholar.org/api-docs/">Semantic Scholar (S2) APIs</a>, but extended to include additional recommendation engines and embeddings.</li>
   <li>Embeddings: ProNE, Specter, GNNs</li>
-  <li>Citation Prediction Benchmark: A classification task for predicting whether paper <i>a</i> cites paper <i>b</i>.  The system is given as input  a pair of papers that are 1-4 hops apart in citation graph.  The system is asked to distinguish positives (1-hop) from negatives (2-4 hops).  In addition, the papers in S2 are assigned to a time bin (0-99).  The system should train on papers in bins 0 through bin <i>t</i> and test on bin <i>t+h</i>, where <i>h</i> is the forecaseting horizon.  For the test set, each pair, <i>a,b</i> is assigned to max(bin(<i>a</i>), bin(<i>b</i>)).</li>
+  <li>Citation Prediction Benchmark: A classification task for predicting whether paper <i>a</i> cites paper <i>b</i>.  The system is given as input  a pair of papers that are 1-4 hops apart in citation graph.  The system is asked to distinguish positives (1-hop) from negatives (2-4 hops).  In addition, the papers in S2 are assigned to a time bin (0-99).  The system should train on papers in bins 0 through bin <i>t</i> and test on bin <i>t+h</i>, where <i>h</i> is the forecaseting horizon.  For the test set, each pair, <i>a,b</i> is assigned to max(bin(<i>a</i>), bin(<i>b</i>)).  
+    <p>The first figure below trains ProNE on 50 bins.  Note that performance degrades with <i>h</i> (forecasting further into the future).</p>
+    <p>The second figure below shows that larger graphs favor ProNE.  Many benchmarks evaluate systems on a single graph, but we should be interested in how performance scales with the size of the input.  Graph-based (GB) methods based on citations (ProNE) scale differently than Content-based Filtering (CBF) methods based on abstracts (Specter).</p>
+  </li>
 </ol>
 
-<img src="figures/crossover.pdf" alt="crossover" width="300">
+<img src="figures/train_on_50_bins.pdf.pdf" alt="Train on 50 Bins" width="300">
+<img src="figures/crossover.pdf" alt="Crossover" width="300">
 
 <h2>Installation</h2>
 
