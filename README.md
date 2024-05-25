@@ -4,7 +4,7 @@
 
 <ol>
   <li><a href="documentation/api.md">APIs</a>: Easy-to-Use tools based on <a href="https://api.semanticscholar.org/api-docs/">Semantic Scholar (S2) APIs</a>, but extended to include additional recommendation engines and embeddings.</li>
-  <li>Embeddings: ProNE, Specter, GNNs</li>
+  <li><a href="documentation/bulk_download.md">Embeddings</a>: ProNE, Specter, GNNs</li>
   <li>Citation Prediction Benchmark: A classification task for
   predicting whether paper <i>a</i> cites paper <i>b</i>.  The system
   is given as input a pair of papers that are 1-4 hops apart in the
