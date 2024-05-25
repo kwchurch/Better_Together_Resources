@@ -73,16 +73,13 @@ do
 echo $dir
 echo '316030    47066000' | python src/simple_pairs_to_cos.py --dir $dir
 done
-    ```
 
-    
-```sh
 for dir in embeddings/*
 do
 echo $dir
 echo '316030    6496359' | python src/simple_pairs_to_cos.py --dir $dir
 done
-    ```
+```
     
 The following is like above but for several ProNE-s models.
 
@@ -92,15 +89,13 @@ do
 echo $dir
 echo '316030    47066000' | python src/simple_pairs_to_cos.py --dir $dir
 done
-```
 
-```sh
 for dir in embeddings/ProNE-s/bins/0?? embeddings/ProNE-s
 do
 echo $dir
 echo '316030    6496359' | python src/simple_pairs_to_cos.py --dir $dir
 done
-    ```
+```
     
 
 The input are a pair of corpus ids from Semantic Scholar.  See <a href="src">here</a> for the code; it shows how to compute cosine similarities for pairs of corpus ids using several different embeddings.
