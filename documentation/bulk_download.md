@@ -98,7 +98,7 @@ done
 ```
     
 
-The input are a pair of corpus ids from Semantic Scholar.  See <a href="src">here</a> for the code; it shows how to compute cosine similarities for pairs of corpus ids using several different embeddings.
+The input are a pair of corpus ids from Semantic Scholar.  See <a href="../src/">here</a> for the code; it shows how to compute cosine similarities for pairs of corpus ids using several different embeddings.
 
 <p>
   The following implements the approximate nearest neighbor search.  The Python program, src/near.py, inputs a corpus id and outputs topN corpus ids.  The code assumes the --dir argument contains several indexing files named postings.* and landmarks.*.
