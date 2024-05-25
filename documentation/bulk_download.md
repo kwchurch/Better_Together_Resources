@@ -1,6 +1,6 @@
 # Bulk Downloads of Precomputed embeddings
 
-There are several large embeddings that you can download <a href="embeddings">here</a>.  That file contains
+There are several large embeddings that you can download <a href="http://34.204.188.58/files/embeddings/">here</a>.  That file contains
 the following subdirectories:
 <table border="1">
   <tr><th>Subdirectory</th> <th>Papers (N)</th><th>Dimensions (K)</th><th>Size of embedding.f</th></tr>
@@ -53,7 +53,7 @@ See <a href="http://34.204.188.58/similar_documentation.html">here</a> for docum
 <p>
 Consider this example:
 <ol>
-  <li>Find the id for a paper from (part of) its title with <a href="../cgi-bin/paper_search?query=Personalizing%20Search%20via%20Association">this</a></li>
+  <li>Find the id for a paper from (part of) its title with <a href="http://34.204.188.58/cgi-bin/paper_search?query=Personalizing%20Search%20via%20Association">this</a></li>
   <li>Use that id Recommend papers with:
     <ol>
       <li><a href="http://34.204.188.58//cgi-bin/recommend_papers?id=CorpusId:316030&method=s2_api&fields=citationCount,externalIds,title&score1=ProNE,Specter">a recommendation API from Semantic Scholar (S2)</a></li>
