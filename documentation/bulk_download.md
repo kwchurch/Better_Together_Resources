@@ -24,6 +24,8 @@ There are also some embeddings for a few ProNE-s models trained on subgraphs:
   <tr><td><a href="http://34.204.188.58/files/embeddings/ProNE-s/bins/050">ProNE-s (bin 50)</a></td><td>49M</td><td>280</td><td>55GB</td></tr>
 </table>
 
+See <a href="bin_assignments.md">here</a> for documentation on assignments of paper ids to bins.
+<p>
 It is assumed that each of these directories contain the following files:
 <ol>
   <li>embedding.f: a sequence of N by K floats, where N is the number of nodes (papers) in the embedding, and K is the number of hidden dimensions</li>
