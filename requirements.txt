@@ -2,4 +2,3 @@ wget
 requests
 numpy
 vecml
-mycgi
