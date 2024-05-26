@@ -2,10 +2,10 @@
 
 <h2>Resources</h2>
 
+There are three resources in this github repository:
+
 <ol>
-  <li><a href="documentation/api.md">APIs</a>: Easy-to-Use tools based on <a href="https://api.semanticscholar.org/api-docs/">Semantic Scholar (S2) APIs</a>, but extended to include additional recommendation engines and embeddings.</li>
-  <li><a href="documentation/bulk_download.md">Embeddings</a>: ProNE, Specter, GNNs</li>
-  <li>Citation Prediction Benchmark: A classification task for
+  <li>TimeCite Benchmark: A classification task for
   predicting whether paper <i>a</i> cites paper <i>b</i>.  The system
   is given as input a pair of papers that are 1-4 hops apart in the
   citation graph.  The system is asked to distinguish positives
@@ -17,6 +17,11 @@
     <p>The first figure below trains ProNE on 50 bins.  Note that performance degrades with <i>h</i> (forecasting further into the future).</p>
     <p>The second figure below shows that larger graphs favor ProNE.  Many benchmarks evaluate systems on a single graph, but we should be interested in how performance scales with the size of the input.  Graph-based (GB) methods based on citations (ProNE) scale differently than Content-based Filtering (CBF) methods based on abstracts (Specter).</p>
   </li>
+
+  <li><a href="documentation/bulk_download.md">Embeddings</a>: ProNE, Specter, GNNs</li>
+
+  <li><a href="documentation/api.md">APIs</a>: Easy-to-Use tools based on <a href="https://api.semanticscholar.org/api-docs/">Semantic Scholar (S2) APIs</a>, but extended to include additional recommendation engines and embeddings.</li>
+
 </ol>
 
 <img src="figures/train_on_50_bins.pdf" alt="Train on 50 Bins" width="300">
@@ -31,7 +36,7 @@ pip install -r requirements.txt
 
 <h2>Obtaining Secrets</h2>
 
-It is not necessary to have a key from semantic scholar, but it is recommended.  You can obtain a key from <a href="https://www.semanticscholar.org/product/api#api-key">here</a>.
+It is not necessary to have a key from semantic scholar to use our APIs, but it is recommended.  You can obtain a key from <a href="https://www.semanticscholar.org/product/api#api-key">here</a>.
 
 <p>
 VecML keys can be obtained from  <a href="www.vecml.com">here</a>.  Click on login -> API Key.
@@ -45,6 +50,11 @@ VecML keys can be obtained from  <a href="www.vecml.com">here</a>.  Click on log
 "vecml_apikeys" : [ ** insert zero or more vecml api keys here ** ] }
 ```
 
+<h2>Running APIs on the Local Host</h2>
+
+It is not necessary to create a local host.  If you want to run these APIs on our host, please go <a href="http://34.204.188.58//similar_documentation.html#APIs">here</a>.
+
+<p>
 To start the web server
 
 ```sh
@@ -54,9 +64,8 @@ python3 -m http.server --cgi
 
 Then you should be able run these examples on the local host.
 
-<h2>Examples</h2>
-
-Test server.  You should see "hello world" if the server is running when you click <a href="http://0.0.0.0:8000/cgi-bin/api/hello.py">here</a>.
-
+<p>
+  To test server, click <a href="http://0.0.0.0:8000/cgi-bin/api/hello.py">here</a>  You should see "hello world" if the server is running.
+  <p>
 If you see "hello world," then try these <a href="documentation/api.md">examples</a>.
     
