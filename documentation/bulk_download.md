@@ -4,10 +4,10 @@ There are several large embeddings that you can download <a href="http://34.204.
 the following subdirectories:
 <table border="1">
   <tr><th>Subdirectory</th> <th>Papers (N)</th><th>Dimensions (K)</th><th>Size of embedding.f</th></tr>
-  <tr><td><a href="http://34.204.188.58/files/embeddings/ProNE-s">ProNE-s</a></td><td>112M</td><td>280</td><td>125GB</td></tr>
-  <tr><td><a href="http://34.204.188.58/files/embeddings/Specter2">Specter2</a></td><td>119M</td><td>768</td><td>365GB</td></tr>
-  <tr><td><a href="http://34.204.188.58/files/embeddings/SciNCL">SciNCL</a></td><td>90M</td><td>768</td><td>279GB</td></tr>
-  <tr><td><a href="http://34.204.188.58/files/embeddings/GNN">GNN</a></td><td>99M</td><td>200</td><td>79GB</td></tr>
+  <tr><td><a href="http://34.204.188.58/files/embeddings/ProNE-s">ProNE-s</a></td><td>119M</td><td>280</td><td>125GB</td></tr>
+  <tr><td><a href="http://34.204.188.58/files/embeddings/Specter2">Specter2</a></td><td>127M</td><td>768</td><td>365GB</td></tr>
+  <tr><td><a href="http://34.204.188.58/files/embeddings/SciNCL">SciNCL</a></td><td>97M</td><td>768</td><td>279GB</td></tr>
+  <tr><td><a href="http://34.204.188.58/files/embeddings/GNN">GNN</a></td><td>106M</td><td>200</td><td>79GB</td></tr>
 </table>
 
 This README file explains what you can do with those subdirectories.
@@ -17,11 +17,11 @@ There are also some embeddings for a few ProNE-s models trained on subgraphs:
 
 <table border="1">
   <tr><th>Subdirectory</th> <th>Papers (N)</th><th>Dimensions (K)</th><th>Size of embedding.f</th></tr>
-  <tr><td><a href="http://34.204.188.58/files/embeddings/ProNE-s/bins/010">ProNE-s (bin 10)</a></td><td>8M</td><td>280</td><td>9GB</td></tr>
-  <tr><td><a href="http://34.204.188.58/files/embeddings/ProNE-s/bins/020">ProNE-s (bin 20)</a></td><td>19M</td><td>280</td><td>21GB</td></tr>
-  <tr><td><a href="http://34.204.188.58/files/embeddings/ProNE-s/bins/030">ProNE-s (bin 30)</a></td><td>29M</td><td>280</td><td>32GB</td></tr>
-  <tr><td><a href="http://34.204.188.58/files/embeddings/ProNE-s/bins/040">ProNE-s (bin 40)</a></td><td>39M</td><td>280</td><td>44GB</td></tr>
-  <tr><td><a href="http://34.204.188.58/files/embeddings/ProNE-s/bins/050">ProNE-s (bin 50)</a></td><td>49M</td><td>280</td><td>55GB</td></tr>
+  <tr><td><a href="http://34.204.188.58/files/embeddings/ProNE-s/bins/010">ProNE-s (bin 10)</a></td><td>9M</td><td>280</td><td>9GB</td></tr>
+  <tr><td><a href="http://34.204.188.58/files/embeddings/ProNE-s/bins/020">ProNE-s (bin 20)</a></td><td>20M</td><td>280</td><td>21GB</td></tr>
+  <tr><td><a href="http://34.204.188.58/files/embeddings/ProNE-s/bins/030">ProNE-s (bin 30)</a></td><td>31M</td><td>280</td><td>32GB</td></tr>
+  <tr><td><a href="http://34.204.188.58/files/embeddings/ProNE-s/bins/040">ProNE-s (bin 40)</a></td><td>41M</td><td>280</td><td>44GB</td></tr>
+  <tr><td><a href="http://34.204.188.58/files/embeddings/ProNE-s/bins/050">ProNE-s (bin 50)</a></td><td>52M</td><td>280</td><td>55GB</td></tr>
 </table>
 
 See <a href="bin_assignments.md">here</a> for documentation on assignments of paper ids to bins.
