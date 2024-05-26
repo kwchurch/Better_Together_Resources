@@ -8,7 +8,7 @@ The following APIs return json objects:
 <table border="1">
 <tr><th align="left">API</th><th align="left">Examples</th><th align="left">Arguments</th><th align="left" width="50%">Description</th></tr>
 
-<tr><td>Paper Search</td>
+<tr><td id="paper_search">Paper Search</td>
   <td><a href="http://0.0.0.0:8000/cgi-bin/api/paper_search?query=Word%20Association">example</a></td>
   <td><a href="#help">help</a>, <a href="#query">query</a>, <a href="#paper_fields">fields</a></td>
   <td>
@@ -20,7 +20,7 @@ The following APIs return json objects:
   </td>
 </tr>
 
-<tr><td>Author Search</td>
+<tr><td id="author_search">Author Search</td>
   <td><a href="http://0.0.0.0:8000/cgi-bin/api/author_search?query=Kenneth+Church">example</a></td>
   <td><a href="#help">help</a>, <a href="#query">query</a>, <a href="#author_fields">fields</a></td>
   <td>
@@ -31,7 +31,7 @@ The following APIs return json objects:
     </ul>
 </td></tr>
 
-<tr><td>Lookup Paper</td>
+<tr><td id="lookup_paper">Lookup Paper</td>
   <td><a href="http://0.0.0.0:8000/cgi-bin/api/lookup_paper?id=PMID:24335157&fields=title&embeddings=prone">simple example</a>,
     <br>
 <a href="http://0.0.0.0:8000/cgi-bin/api/lookup_paper?id=PMID:24335157,CorpusId:9558665&fields=title,authors,year,citationCount,referenceCount,externalIds,citations&embeddings=prone,s2_api,specter">more challenging example</a></td>
@@ -48,7 +48,7 @@ The following APIs return json objects:
   </td>
 </tr>
 
-<tr><td>Lookup Author</td>
+<tr><td id="lookup_author">Lookup Author</td>
   <td><a href="http://0.0.0.0:8000/cgi-bin/api/lookup_author?id=2244184&fields=papers.venue,papers.citationStyles,papers.s2FieldsOfStudy,name,authorId,citationCount,paperCount,hIndex,papers.title,papers.citationCount,papers.authors">example</a></td>
   <td><a href="#help">help</a>, <a href="#author_id">id</a>, <a href="#Fields">fields</a></td>
   <td>
@@ -60,7 +60,7 @@ The following APIs return json objects:
   </td>
 </tr>
 
-<tr><td>Lookup Citations</td>
+<tr><td id="lookup_citations">Lookup Citations</td>
   <td><a href="http://0.0.0.0:8000/cgi-bin/api/lookup_citations?id=CorpusId:9558665&offset=200&limit=100&fields=contexts,citationCount,referenceCount,title,authors">example</a></td>
   <td><a href="#help">help</a>, <a href="#offset">offset</a> (defaults to 0), <a href="#limit">limit</a> (defaults to 100; max is 1000), <a href="#paper_id">id</a>, <a href="#citation_fields">fields</a></td>
   <td>
@@ -72,7 +72,7 @@ The following APIs return json objects:
   </td>
 </tr>
 
-<tr><td>Coauthors</td>
+<tr><td id="coauthors">Coauthors</td>
   <td><a href="http://0.0.0.0:8000/cgi-bin/api/coauthors?query=Kenneth+Church&after_year=2020">example</a></td>
   <td><a href="#help">help</a>, <a href="#query">query</a>,
   after_year</td>
@@ -87,7 +87,7 @@ The following APIs return json objects:
   </td>
 </tr>
 
-<tr><td>Recommend Papers</td>
+<tr><td id="recommend papers">Recommend Papers</td>
   <td><a href="http://0.0.0.0:8000/cgi-bin/api/recommend_papers?id=CorpusId:10491450&method=ProNE&fields=citationCount,externalIds">example</a></td>
   <td><a href="#help">help</a>, <a href="#paper_id">id</a>, <a href="#limit">limit</a>, <a href="#method">method</a>, <a href="#paper_fields">fields</a>,
   sort_by, <a href="#score1">score1</a>, <a href="#score2">score2</a></td>
@@ -107,7 +107,7 @@ The following APIs return json objects:
 </td>
 </tr>
 
-<tr><td>Recommend Authors</td>
+<tr><td id="recommend_authors">Recommend Authors</td>
   <td><a href="http://0.0.0.0:8000/cgi-bin/api/recommend_authors?id=CorpusId:9558665&method=ProNE&fields=citationCount,externalIds">example</a></td>
   <td><a href="#help">help</a>, <a href="#paper_id">id</a>, <a href="#limit">limit</a>, <a href="#method">method</a>, <a href="#paper_fields">fields</a>, sort_by, <a href="#score1">score1</a>, <a href="#score2">score2</a></td>
   <td>
@@ -120,7 +120,7 @@ The following APIs return json objects:
 </td>
 </tr>
 
-<tr><td>Compare and Contrast</td>
+<tr><td id="compare_and_contrast">Compare and Contrast</td>
   <td><a href="http://0.0.0.0:8000/cgi-bin/api/compare_and_contrast?ids=CorpusId:10491450,CorpusId:29970479">example1</a>
 <br>
 <a href="http://0.0.0.0:8000/cgi-bin/api/compare_and_contrast?ids=c129e8025fffa065edb5b27dd7c2269abc0a138b,CorpusId:2640788">example2</a>
@@ -136,7 +136,7 @@ The following APIs return json objects:
 </td>
 </tr>
 
-<tr><td>Compare and Contrast Texts</td>
+<tr><td id="compare_and_contrast_tests">Compare and Contrast Texts</td>
   <td><a href="http://0.0.0.0:8000/cgi-bin/api/compare_and_contrast_texts?text1=I love you.&text2=I hate you.">example</a>
 </td>
   <td><a href="#help">help</a>, text1, text2</td>
