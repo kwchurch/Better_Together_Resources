@@ -5,7 +5,7 @@
 There are three resources in this github repository:
 
 <ol>
-  <li>TimeCite Benchmark: A classification task for
+  <li><a href="https://github.com/petervickers/TimeCite">TimeCite Benchmark</a>: A classification task for
   predicting whether paper <i>a</i> cites paper <i>b</i>.  The system
   is given as input a pair of papers that are 1-4 hops apart in the
   citation graph.  The system is asked to distinguish positives
