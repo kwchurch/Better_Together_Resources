@@ -18,7 +18,7 @@ There are three resources in this github repository:
     <p>The second figure below shows that larger graphs favor ProNE.  Many benchmarks evaluate systems on a single graph, but we should be interested in how performance scales with the size of the input.  Graph-based (GB) methods based on citations (ProNE) scale differently than Content-based Filtering (CBF) methods based on abstracts (Specter).</p>
   </li>
 
-  <li><a href="documentation/bulk_download.md">Embeddings</a>: ProNE, Specter, GNNs</li>
+  <li><a href="documentation/bulk_download.md">Embeddings</a>: ProNE-s, Specter2, SciNCL, GNNs</li>
 
   <li><a href="documentation/api.md">APIs</a>: Easy-to-Use tools based on <a href="https://api.semanticscholar.org/api-docs/">Semantic Scholar (S2) APIs</a>, but extended to include additional recommendation engines and embeddings.</li>
 
