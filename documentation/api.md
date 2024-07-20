@@ -173,7 +173,8 @@ The following APIs return json objects:
   <li><a href="#Fields">fields</a>: one or more comma separated values.  Many values are supported including title, authors, publication year, bibtex entries, references, citations, citing sentences and much more (see discussion <a href="#Fields">below</a>)</li>
   <li id="method">method (for generating recommendations); method should be one of the following (comma separated values and case insensitive):
     <ol>
-      <li>ProNE: <a href="http://0.0.0.0:8000//cgi-bin/api/recommend_papers?id=CorpusId:10491450&method=prone&fields=title">example</a></li>
+      <li>combined: <a href="cgi-bin/recommend_papers?id=CorpusId:10491450&method=combined&fields=title">example</a> (a fast precomputed combination of ProNE and Specter)</li>
+        <li>ProNE: <a href="http://0.0.0.0:8000//cgi-bin/api/recommend_papers?id=CorpusId:10491450&method=prone&fields=title">example</a></li>
       <li>Specter: <a href="http://0.0.0.0:8000//cgi-bin/api/recommend_papers?id=CorpusId:10491450&method=specter&fields=title">example</a></li>
       <li>s2_api: <a href="http://0.0.0.0:8000//cgi-bin/api/recommend_papers?id=CorpusId:10491450&method=s2_api&fields=title">example</a></li>
       <li>pubmed_api: <a href="http://0.0.0.0:8000//cgi-bin/api/recommend_papers?id=CorpusId:10491450&method=pubmed_api&fields=title">example</a></li>
