@@ -4,7 +4,7 @@
 <h2 id="APIs">APIs</h2>
 
 <b><i>NOTE</i></b>: The links in the table below assume that you are running these APIs on your local machine.  To do that, you will
-need to follow the instructions in the <a href="../README.md">README</a>.  If you want to run these examples on our server, please go <a href="http://34.204.188.58//similar_documentation.html#APIs">here</a>.
+need to follow the instructions in the <a href="../README.md">README</a>.  If you want to run these examples on our server, please go <a href="https://recommendpapers.xyz/similar_documentation.html#APIs">here</a>.
 <p>
 
 The following APIs return json objects:
